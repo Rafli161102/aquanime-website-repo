@@ -1,0 +1,1499 @@
+/* General Styles */
+:root {
+    --primary-blue: #0F50A6;
+    --light-blue-1: #3B8DBF;
+    --light-blue-2: #73C6D9;
+    --light-blue-3: #C1D9F3;
+    --accent-yellow: #F2CB57;
+    --dark-grey: #0D0D0D;
+    --white: #FFFFFF;
+    --text-color: var(--dark-grey);
+    --link-color: var(--primary-blue);
+    --hover-color: var(--accent-yellow);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    overflow-x: hidden;
+    color: var(--white); /* Teks default putih karena background semua halaman sama */
+    background-image: url('../images/homepage_bg_full.jpg'); /* Gambar latar utama untuk SEMUA halaman */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: fixed; /* Efek parallax pada SEMUA halaman */
+    background-color: #5ab1e4; /* Warna fallback / base biru langit */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: var(--hover-color);
+}
+
+/* Buttons */
+.btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin: 15px 10px;
+    text-align: center;
+    white-space: nowrap;
+    z-index: 10;
+    position: relative;
+    font-size: 1.1em;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    text-transform: uppercase;
+}
+
+.btn-primary:hover {
+    background-color: var(--light-blue-1);
+    border-color: var(--light-blue-1);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.btn-secondary {
+    background-color: var(--white);
+    color: var(--primary-blue);
+    border: 2px solid var(--primary-blue);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+/* ========================================= */
+/* HEADER / NAVBAR                           */
+/* ========================================= */
+header {
+    background-color: transparent; /* Selalu transparan di posisi awal */
+    color: var(--white);
+    padding: 15px 0;
+    position: absolute; /* Selalu absolute di posisi awal */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: none;
+}
+
+header.scrolled { /* Efek solid saat scroll di SEMUA halaman */
+    background-color: rgba(15, 80, 166, 0.9);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    position: fixed;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+nav .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.6em;
+    font-weight: 700;
+    z-index: 1001;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}
+
+nav .logo img {
+    height: 45px;
+    margin-right: 12px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 35px;
+}
+
+nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+    position: relative;
+}
+
+nav ul li a:hover {
+    color: var(--accent-yellow);
+    text-shadow: 0 0 8px rgba(255,255,255,0.8);
+}
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 3px;
+    background-color: var(--accent-yellow);
+    transition: width 0.3s ease;
+}
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+
+.social-icons {
+    display: flex;
+    align-items: center;
+}
+
+.social-icons a {
+    color: var(--white);
+    font-size: 22px;
+    margin-left: 18px;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.2s ease;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}
+
+.social-icons a:hover {
+    color: var(--accent-yellow);
+    text-shadow: 0 0 8px rgba(255,255,255,0.8);
+    transform: translateY(-2px);
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+    display: none;
+    font-size: 32px;
+    color: var(--white);
+    cursor: pointer;
+    z-index: 1001;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}
+
+/* ========================================= */
+/* HOMEPAGE SECTIONS WITH SINGLE BACKGROUND  */
+/* (These styles will now apply to all pages because homepage-body class is global) */
+/* ========================================= */
+.homepage-body { /* This class is now applied to ALL body tags */
+    background-image: url('../images/homepage_bg_full.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: fixed;
+    background-color: #5ab1e4;
+}
+
+.homepage-main-content { /* Main content for homepage only */
+    position: relative;
+    z-index: 1;
+}
+
+.homepage-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    position: relative;
+    padding: 50px 20px;
+    background: transparent;
+    z-index: 2;
+    box-sizing: border-box;
+}
+
+/* Overlay untuk setiap seksi */
+.homepage-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    z-index: 1;
+}
+.content-overlay-1::before { background: rgba(0,0,0,0.1); }
+.content-overlay-2::before { background: rgba(0,0,0,0.1); }
+.content-overlay-3::before { background: rgba(0,0,0,0.1); }
+.content-overlay-4::before { background: rgba(0,0,0,0.1); }
+
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 20px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+}
+
+.hero-content h1 {
+    font-size: 4.5em;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+.hero-content h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.hero-content p {
+    font-size: 1.3em;
+    margin-bottom: 40px;
+}
+
+/* Khusus untuk seksi kedua (dulu hero-2) agar teksnya rata kiri */
+.homepage-section:nth-child(2) {
+    justify-content: flex-start;
+    text-align: left;
+}
+.homepage-section:nth-child(2) .hero-content {
+    margin-left: 15%;
+}
+
+
+/* ========================================= */
+/* SHAPES (Bentuk) Tambahan                  */
+/* ========================================= */
+
+.projects-page-title {
+    position: relative;
+    display: inline-block;
+    padding: 10px 0;
+}
+.projects-page-title::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, var(--accent-yellow), var(--white));
+    border-radius: 50%;
+    opacity: 0.7;
+    filter: blur(5px);
+    z-index: -1;
+}
+
+.large-social-icons {
+    position: relative;
+    z-index: 2;
+    padding: 30px 0;
+}
+.large-social-icons::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 500px;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    z-index: -1;
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+.large-social-icons a {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    padding: 15px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+.large-social-icons a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-5px) scale(1.05);
+}
+
+
+/* Content Section General (for other pages) */
+/* This will now apply to all 'main' containers for non-homepage sections */
+main {
+    position: relative; /* Penting untuk z-index di atas body background */
+    z-index: 1; /* Pastikan konten halaman di atas background body */
+    padding-top: 100px; /* Dorong konten ke bawah agar tidak tertutup header absolute */
+    background-color: rgba(193, 217, 243, 0.8); /* Latar belakang semi-transparan untuk konten */
+    box-shadow: 0 0 20px rgba(0,0,0,0.2); /* Shadow di sekitar konten halaman */
+    min-height: calc(100vh - 150px); /* Pastikan konten cukup tinggi, kurangi tinggi footer */
+    padding-bottom: 50px; /* Padding di bawah konten */
+    margin-top: 0; /* Pastikan tidak ada margin-top dari body sebelumnya */
+    border-radius: 0; /* Hapus border-radius dari main jika ada */
+    color: var(--text-color); /* Teks di main berwarna gelap */
+}
+/* OVERRIDE for homepage-main-content which has no padding-top and background-color */
+.homepage-main-content {
+    background-color: transparent;
+    padding-top: 0;
+}
+
+
+.content-section {
+    background-color: var(--white);
+    padding: 40px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    color: var(--text-color); /* Pastikan teks di dalam section berwarna gelap */
+}
+.content-section h2, .content-section h3, .content-section h4 {
+    color: var(--primary-blue); /* Judul dalam section berwarna biru */
+}
+.content-section p, .content-section ul, .content-section ul li {
+    color: var(--dark-grey); /* Teks dalam section berwarna gelap */
+}
+
+
+.content-section h2 {
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+    border-bottom: 3px solid var(--accent-yellow);
+    padding-bottom: 10px;
+    display: inline-block;
+    font-size: 2em;
+}
+.content-section h3 {
+    color: var(--primary-blue);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 1px dashed var(--light-blue-1);
+    padding-bottom: 5px;
+    font-size: 1.5em;
+}
+.content-section h4 {
+    color: var(--dark-grey);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.content-section p, .content-section ul {
+    line-height: 1.7;
+    color: var(--dark-grey);
+}
+
+.content-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.content-section ul li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.content-section ul li::before {
+    content: '\2022';
+    color: var(--primary-blue);
+    position: absolute;
+    left: 0;
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+/* Nested lists */
+.nested-list ul {
+    padding-left: 20px;
+    list-style: disc;
+}
+.nested-list ul li {
+    padding-left: 0;
+    margin-bottom: 8px;
+}
+.nested-list ul li::before {
+    content: none;
+}
+
+/* Mascot Info (Tentang Page) */
+.mascot-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.mascot-info .text-content {
+    flex: 2;
+    min-width: 300px;
+}
+
+.mascot-info .image-content {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+
+.mascot-info .image-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.character-sheet-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 30px auto 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Logo Display (Tentang Page) */
+.logo-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.logo-item {
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+}
+
+.logo-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Projects Grid (Proyek Page) */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.project-card {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+}
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card h3 {
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+}
+
+.project-card p {
+    color: var(--dark-grey);
+    line-height: 1.6;
+}
+
+.project-card .icon {
+    font-size: 50px;
+    color: var(--accent-yellow);
+    margin-bottom: 20px;
+}
+
+/* Audio Play Button in Project Cards */
+.project-card .play-audio-btn {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.project-card .play-audio-btn:hover {
+    background-color: var(--light-blue-1);
+    transform: translateY(-2px);
+}
+
+.project-card .play-audio-btn .fas {
+    font-size: 1em;
+}
+
+/* Style for pause state */
+.project-card .play-audio-btn.playing {
+    background-color: var(--accent-yellow);
+    color: var(--dark-grey);
+}
+.project-card .play-audio-btn.playing:hover {
+    background-color: var(--accent-yellow);
+    transform: none; /* No transform on playing hover */
+}
+
+
+/* Partners & Collaborations (Proyek Page) */
+.partners-section {
+    background-color: var(--light-blue-2);
+    padding: 50px;
+    margin-top: 50px;
+    border-radius: 8px;
+    text-align: center;
+    color: var(--text-color);
+}
+.partners-section h2 {
+    color: var(--primary-blue);
+}
+
+
+.partners-section h2 {
+    color: var(--primary-blue);
+    margin-bottom: 30px;
+}
+
+.partners-grid, .collaboration-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.partner-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+}
+
+.partner-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    filter: grayscale(80%);
+    transition: filter 0.3s ease;
+}
+
+.partner-logo img:hover {
+    filter: grayscale(0%);
+}
+
+/* Contact Page Styles */
+.contact-section {
+    background-color: var(--white);
+    padding: 40px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-between;
+    color: var(--text-color);
+}
+.contact-section h2, .contact-section h3, .contact-section h4 {
+    color: var(--primary-blue);
+}
+
+
+.contact-info, .contact-form-container {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--dark-grey);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid var(--light-blue-2);
+    border-radius: 5px;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form button {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 15px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: var(--light-blue-1);
+}
+
+/* Gallery Grid */
+.gallery-grid, .portal-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.gallery-item, .portal-gallery-item {
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover, .portal-gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+/* FIX: Image aspect ratio in gallery items */
+.gallery-item img, .portal-gallery-item img {
+    width: 100%;
+    height: auto; /* Allow height to adjust automatically */
+    object-fit: contain; /* Ensure the entire image is visible without cropping */
+    display: block;
+    max-height: 200px; /* Optional: set a max height to prevent very tall images */
+    background-color: #f0f0f0; /* Optional: background for empty space if object-fit is contain */
+}
+
+.gallery-item .caption {
+    padding: 15px;
+    text-align: center;
+    color: var(--dark-grey);
+    font-size: 0.95em;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-grey);
+    color: var(--white);
+    padding: 40px 0;
+    text-align: center;
+    margin-top: 50px;
+    position: relative;
+    z-index: 5;
+}
+
+footer .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: left;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+footer .footer-section {
+    flex: 1;
+    min-width: 180px;
+    margin: 20px;
+}
+
+footer .footer-section h4 {
+    color: var(--accent-yellow);
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 8px;
+}
+
+footer .footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer .footer-section ul li {
+    margin-bottom: 10px;
+}
+
+footer .footer-section ul li a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer .footer-section ul li a:hover {
+    color: var(--accent-yellow);
+}
+
+footer .copyright {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.9em;
+}
+
+
+/* ========================================= */
+/* ANIMATION STYLES                          */
+/* ========================================= */
+
+/* Base style for elements that will animate */
+.animate-target {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    will-change: opacity, transform;
+}
+
+/* Style when the element is active (in viewport) */
+.animate-target.fade-in-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========================================= */
+/* TESTIMONIAL SLIDER                        */
+/* ========================================= */
+.testimonial-slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto 20px;
+    overflow: hidden;
+    padding: 0 50px;
+    box-sizing: border-box;
+}
+
+.testimonial-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+}
+
+.testimonial-item {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+    box-sizing: border-box;
+    padding: 20px;
+    margin: 10px;
+    background-color: var(--white);
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    text-align: center;
+    color: var(--dark-grey);
+    transform: scale(0.95);
+    opacity: 0.8;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.testimonial-item.active-slide {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.testimonial-item p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.testimonial-item h4 {
+    font-size: 1.2em;
+    color: var(--primary-blue);
+    margin-bottom: 5px;
+}
+
+.testimonial-item span {
+    font-size: 0.9em;
+    color: var(--light-blue-1);
+}
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255,255,255,0.7);
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.5em;
+    color: var(--primary-blue);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    z-index: 20;
+}
+
+.slider-button:hover {
+    background-color: var(--white);
+    color: var(--light-blue-1);
+}
+
+.prev-button {
+    left: 0;
+}
+
+.next-button {
+    right: 0;
+}
+
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dot.active {
+    background-color: var(--accent-yellow);
+    transform: scale(1.2);
+}
+
+
+/* ========================================= */
+/* LIVE CHAT ARIA CHIBI                      */
+/* ========================================= */
+.typing-indicator p {
+    font-style: normal;
+    animation: typing-dots 1s infinite;
+}
+
+@keyframes typing-dots {
+    0% { content: "."; }
+    33% { content: ".."; }
+    66% { content: "..."; }
+    100% { content: "."; }
+}
+
+.aria-chat-popup-container {
+    position: fixed; /* PENTING: Membuatnya mengambang dan tetap */
+    bottom: 30px; /* Jarak dari bawah */
+    right: 30px; /* Jarak dari kanan */
+    z-index: 9999; /* Pastikan di atas semua elemen lain */
+    /* Akan disembunyikan oleh JS di halaman non-homepage */
+}
+
+.aria-chat-icon {
+    width: 60px; /* Ukuran icon Aria */
+    height: 60px;
+    border-radius: 50%; /* Bentuk lingkaran */
+    background-color: var(--primary-blue); /* Warna background icon */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.aria-chat-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+
+.aria-chat-icon img {
+    width: 90%; /* Ukuran gambar Aria di dalam icon */
+    height: 90%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.chat-notification {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--accent-yellow); /* Warna notifikasi */
+    color: var(--dark-grey);
+    font-size: 0.7em;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 4px 8px;
+    min-width: 10px;
+    text-align: center;
+    display: none; /* Sembunyikan secara default, tampilkan dengan JS */
+    z-index: 1;
+}
+
+.aria-chat-box {
+    position: absolute; /* Relatif terhadap container pop-up */
+    bottom: 80px; /* Posisi kotak chat di atas icon */
+    right: 0;
+    width: 320px; /* Lebar kotak chat */
+    height: 400px; /* Tinggi kotak chat */
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0); /* Sembunyikan secara default */
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+.aria-chat-box.active {
+    transform: scale(1); /* Tampilkan kotak chat */
+}
+
+.chat-header {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.chat-header h3 {
+    margin: 0;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.close-chat-btn {
+    font-size: 1.5em;
+    cursor: pointer;
+    line-height: 1; /* Untuk centering icon */
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto; /* Scrollable messages */
+    background-color: var(--light-blue-3); /* Background area pesan */
+    color: var(--dark-grey); /* Teks pesan gelap */
+}
+
+.message {
+    margin-bottom: 10px;
+    max-width: 80%;
+    position: relative;
+    padding: 8px 12px;
+    border-radius: 10px;
+    word-wrap: break-word; /* Untuk pesan panjang */
+}
+
+.message p {
+    margin: 0;
+    font-size: 0.95em;
+}
+
+.bot-message {
+    background-color: var(--white);
+    color: var(--dark-grey);
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    display: flex; /* Untuk avatar */
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.user-message {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    margin-left: auto; /* Pesan user di kanan */
+    border-bottom-right-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.chat-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0; /* Jangan ciutkan avatar */
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    background-color: var(--light-blue-2);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.chat-input input {
+    flex-grow: 1;
+    border: 1px solid var(--light-blue-1);
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    outline: none;
+    background-color: var(--white);
+    color: var(--dark-grey);
+}
+
+.chat-input button {
+    background-color: var(--accent-yellow);
+    color: var(--dark-grey);
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    font-size: 1.1em;
+    margin-left: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.chat-input button:hover {
+    background-color: #f2e057; /* Warna hover kuning */
+}
+
+
+/* ========================================= */
+/* RESPONSIVE DESIGN (Media Queries)   */
+/* ========================================= */
+
+/* Untuk layar PC / Desktop (Large devices) */
+@media (min-width: 993px) {
+    nav ul {
+        display: flex;
+    }
+    .hamburger-menu {
+        display: none;
+    }
+    body { /* Now all body tags have fixed background */
+        background-attachment: fixed;
+    }
+    header {
+        position: absolute; /* Header is absolute at the top */
+    }
+    header.scrolled {
+        position: fixed; /* Becomes fixed when scrolled */
+    }
+}
+
+
+/* Untuk layar Tablet (Medium devices) */
+@media (max-width: 992px) {
+    .container {
+        padding: 15px;
+    }
+
+    nav ul {
+        display: none;
+    }
+    .hamburger-menu {
+        display: block;
+        margin-left: auto;
+    }
+    nav .social-icons {
+        display: none;
+    }
+
+    header {
+        position: fixed; /* Header is always fixed on tablet/mobile */
+        background-color: var(--primary-blue);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    header.scrolled {
+        background-color: rgba(15, 80, 166, 0.95);
+    }
+
+
+    .homepage-section {
+        min-height: 70vh;
+    }
+    .hero-content h1 {
+        font-size: 2.8em;
+    }
+    .hero-content h2 {
+        font-size: 2.2em;
+    }
+    .hero-content p {
+        font-size: 1.1em;
+    }
+    .homepage-section:nth-child(2) .hero-content {
+        margin-left: 5%;
+    }
+
+    .call-to-action h2, .social-media-promo h2 {
+        font-size: 2.2em;
+    }
+    .large-social-icons a {
+        font-size: 40px;
+        margin: 0 15px;
+    }
+    .large-social-icons::before {
+        width: 80%;
+        max-width: 400px;
+        height: 100px;
+    }
+
+    .content-section, .contact-section, .partners-section {
+        padding: 30px;
+    }
+    .content-section h2 {
+        font-size: 1.8em;
+    }
+    .content-section h3 {
+        font-size: 1.4em;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .mascot-info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .mascot-info .text-content, .mascot-info .image-content {
+        min-width: unset;
+        width: 100%;
+    }
+
+    .logo-display {
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    footer .footer-section {
+        flex-basis: 45%;
+        min-width: unset;
+    }
+
+    body { /* Background attachment scroll for Tablet (performance) */
+        background-attachment: scroll;
+    }
+
+    /* RESPONSIVE DESIGN FOR TESTIMONIAL SLIDER */
+    .testimonial-item {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    /* RESPONSIVE FOR CHAT POPUP */
+    .aria-chat-popup-container {
+        bottom: 20px;
+        right: 20px;
+    }
+    .aria-chat-icon {
+        width: 50px;
+        height: 50px;
+    }
+    .chat-notification {
+        font-size: 0.6em;
+        padding: 3px 6px;
+    }
+    .aria-chat-box {
+        width: calc(100vw - 40px);
+        height: 350px;
+        bottom: 70px;
+        right: 0;
+        left: auto;
+    }
+}
+
+/* Untuk layar Mobile (Small devices) */
+@media (max-width: 767px) {
+    .container {
+        padding: 10px;
+    }
+
+    /* Navbar Mobile */
+    nav {
+        padding: 0 10px;
+        position: relative;
+    }
+    nav .logo img {
+        height: 35px;
+    }
+    nav .logo span {
+        font-size: 1.3em;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--primary-blue);
+        position: absolute;
+        top: 70px;
+        left: 0;
+        padding: 20px 0;
+        text-align: center;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+        border-top: 1px solid rgba(255,255,255,0.2);
+        display: none;
+        transition: transform 0.3s ease-out;
+        transform: translateY(-100%);
+    }
+    nav ul.active {
+        display: flex;
+        transform: translateY(0);
+    }
+    nav ul li {
+        margin: 10px 0;
+    }
+    nav ul li a {
+        font-size: 1.1em;
+        display: block;
+        padding: 8px 0;
+    }
+    .social-icons {
+        display: none;
+    }
+    .hamburger-menu {
+        display: block;
+    }
+
+    /* Homepage Sections Mobile */
+    .homepage-section {
+        min-height: 60vh;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 40px 15px;
+    }
+    .hero-content h1 {
+        font-size: 2em;
+    }
+    .hero-content h2 {
+        font-size: 1.6em;
+    }
+    .hero-content p {
+        font-size: 1em;
+    }
+    .btn-primary, .btn-secondary {
+        padding: 10px 20px;
+        font-size: 0.95em;
+        margin: 8px;
+    }
+    .cta-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .homepage-section:nth-child(2) {
+        justify-content: center;
+        text-align: center;
+    }
+    .homepage-section:nth-child(2) .hero-content {
+        margin-left: 0;
+        max-width: 90%;
+    }
+
+    /* Targetkan judul halaman proyek di homepage agar selalu di tengah */
+    .projects-page-title {
+        text-align: center;
+        width: 100%;
+        padding: 10px 0;
+        box-sizing: border-box;
+    }
+    .projects-page-title::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+
+    /* Call to Action & Social Media Promo Mobile */
+    .call-to-action h2, .social-media-promo h2 {
+        font-size: 1.8em;
+    }
+    .large-social-icons a {
+        font-size: 35px;
+        margin: 0 10px;
+    }
+    .large-social-icons::before {
+        width: 100%;
+        max-width: unset;
+        height: 80px;
+        border-radius: 10px;
+    }
+
+    /* Content Sections Mobile */
+    .content-section {
+        padding: 20px;
+    }
+    .content-section h2 {
+        font-size: 1.6em;
+        text-align: center;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    .content-section h3 {
+        font-size: 1.2em;
+        text-align: center;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    .content-section ul li {
+        padding-left: 20px;
+    }
+    .content-section ul li::before {
+        font-size: 1em;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .project-card {
+        padding: 20px;
+    }
+    .project-card.maskot-card::before {
+        width: 100px;
+        height: 100px;
+        bottom: -30px;
+    }
+
+    .partners-section {
+        padding: 30px 15px;
+    }
+    .partners-grid, .collaboration-grid {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 10px;
+    }
+    .partner-logo {
+        height: 60px;
+    }
+
+    .contact-info, .contact-form-container {
+        min-width: unset;
+        width: 100%;
+    }
+    .contact-section {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .gallery-grid, .portal-gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+    }
+    .gallery-item img, .portal-gallery-item img {
+        height: 120px;
+    }
+
+    /* Footer Mobile */
+    footer .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    footer .footer-section {
+        margin: 15px 0;
+        width: 90%;
+    }
+    footer .footer-section h4 {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    /* RESPONSIVE DESIGN FOR TESTIMONIAL SLIDER */
+    .testimonial-slider-container {
+        padding: 0 10px;
+    }
+    .testimonial-item {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin: 5px;
+    }
+    .slider-button {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+    }
+    .prev-button { left: 0; }
+    .next-button { right: 0; }
+}
+
+/* Penyesuaian untuk Orientasi Lanskap (Tablet Kecil & Mobile) */
+@media (max-width: 767px) and (orientation: landscape) {
+    .homepage-section {
+        min-height: 400px;
+    }
+    .hero-content h1 {
+        font-size: 1.8em;
+    }
+    .hero-content h2 {
+        font-size: 1.4em;
+    }
+    .btn-primary, .btn-secondary {
+        margin: 5px;
+    }
+    .cta-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    nav ul.active {
+        top: 60px;
+        padding: 10px 0;
+    }
+}
